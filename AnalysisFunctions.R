@@ -80,8 +80,10 @@ getTMMNormalizedMatrix <- function(M){
   t(t(M)/(norm.factors*lib.sizes))
 }
 
+
+##removeRareClones assumes first column contains clone names, and the rest of the columns contain actual numeric data
 removeRareClones<-function(m,N){
-  m[which(rowSums(apply(m[,-1],c(1,2),function(x)x!=0))>N),]
+  m[rowSums(m[,-1]>0)>N,]
 }
 
 wrapNormalize <- function(DF){
