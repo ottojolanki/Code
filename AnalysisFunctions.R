@@ -43,7 +43,10 @@ identifyJ24 <- function(DF = data.frame()){
 }
 
 ##analysis functions
-
+##function for building dataframes for usage analyses
+##data:the dataframe of raw counts
+##columns.to.aggregate.by: named list 
+##for example: alpha.V.cd4  <- aggregateForUsage(alpha.cd4, list(vhash = alpha.cd4$vhash), 1:3)
 aggregateForUsage <- function(data, columns.to.aggregate.by, columns.to.omit = 1:4, agg.function = sum){
   return(aggregate(data[, -columns.to.omit], by = columns.to.aggregate.by, FUN = agg.function ))
 }
